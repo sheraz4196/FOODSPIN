@@ -1,0 +1,262 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-grey-1: #333;
+  --color-primary: #ff922c;
+  --backgrounds: #ffeede;
+}
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  @include respond(small-tab-land) {
+    font-size: 56.25%;
+  }
+  @include respond(phone) {
+    font-size: 50%;
+  }
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+body {
+  position: relative;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: var(--color-grey-1);
+  z-index: 2;
+  @include respond(small-desktops) {
+    overflow: hidden;
+  }
+}
+//utilities
+.u-margin-bottom-small {
+  margin-bottom: 2rem;
+}
+
+//REAL COMPONENTS
+.header {
+  padding: 6rem;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  z-index: 3;
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
+  @include respond(phone) {
+    padding: 2rem;
+    margin-bottom: 4rem;
+  }
+  @include respond(big-desktop) {
+    padding: 10rem;
+  }
+  &__container {
+    display: flex;
+    gap: 20rem;
+    // margin-right: auto;
+    align-items: center;
+    @include respond(phone) {
+      gap: 12rem;
+    }
+    @include respond(phone3) {
+      gap: 4rem;
+    }
+    @include respond(big-desktop) {
+      gap: 30rem;
+    }
+  }
+  &__logo {
+    width: 100%;
+    @include respond(phone) {
+      width: 90%;
+    }
+    @include respond(phone3) {
+      width: 80%;
+    }
+  }
+}
+.main-nav {
+  &__list {
+    list-style: none;
+
+    display: flex;
+    gap: 5rem;
+    @include respond(phone) {
+      gap: 4rem;
+    }
+    @include respond(phone2) {
+      gap: 3rem;
+    }
+    @include respond(big-desktop) {
+      gap: 10rem;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 500;
+      text-transform: capitalize;
+      color: var(--color-grey-1);
+      transition: all 0.3s;
+      @include respond(big-desktop) {
+        font-size: 1.8rem;
+      }
+    }
+    &:hover,
+    &:active {
+      text-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.9);
+      transform: translateY(-0.5rem);
+    }
+  }
+}
+.circle {
+  //the big circles which is half hidden
+  position: absolute;
+  top: -180rem;
+  right: -80%;
+  z-index: -1;
+  width: 200rem;
+  height: 200rem;
+  transform: scale(1.16) translateX(-15rem) translateY(0.8rem);
+  border-radius: 50%;
+  background: var(--backgrounds);
+  @include respond(small-desktops) {
+    width: 195rem;
+    height: 195rem;
+    transform: scale(1.05) translateX(-14rem) translateY(2rem);
+  }
+
+  @include respond(tab-port) {
+    width: 195rem;
+    height: 195rem;
+    transform: scale(1.3) translateX(-14rem) translateY(2rem);
+  }
+  @include respond(phone) {
+    width: 190rem;
+    height: 190rem;
+    transform: scale(1.8) translateX(-6rem) translateY(0rem);
+  }
+  @include respond(phone) {
+    width: 190rem;
+    height: 190rem;
+    transform: scale(1.4) translateX(-6rem) translateY(0rem);
+  }
+}
+.circular-line {
+  position: relative;
+  //the dashed border behind the images
+  width: 60rem;
+  height: 60rem;
+  -webkit-clip-path: circle(50% at 46% 32%);
+  clip-path: circle(55% at 52% 24%);
+  border: 3px dashed var(--color-primary);
+  border-radius: 50%;
+  overflow: visible;
+  // clip-path: circle(50% at 51% 100%);
+  background-color: transparent;
+  padding: 5rem;
+  animation: move 4s 2s infinite;
+
+  @include respond(tab-port) {
+    width: 55rem;
+    height: 55rem;
+  }
+  @include respond(phone) {
+    width: 50rem;
+    height: 50rem;
+  }
+  @include respond(phone2) {
+    width: 45rem;
+    height: 45rem;
+  }
+  @include respond(phone3) {
+    width: 35rem;
+    height: 35rem;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.heading-primary {
+  font-size: 3.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 5rem; /* 138.889% */
+  text-transform: capitalize;
+}
+
+.btn {
+  &:link,
+  &:visited {
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--color-white);
+    font-family: Poppins;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 1.5rem 4rem;
+  }
+  &--orange {
+    &:link,
+    &:visited {
+      background: var(--color-primary);
+      box-shadow: 0px 2rem 4rem 0px rgb(244, 226, 209);
+      transition: all 0.3s;
+    }
+    &:hover {
+      background: var(--backgrounds);
+      color: var(--color-grey-1);
+    }
+    &:active {
+      box-shadow: 0px 1rem 2rem 0px rgb(244, 226, 209);
+    }
+  }
+}
+.footer {
+  overflow: hidden;
+  margin-top: -25rem;
+  .arrows {
+    display: flex;
+
+    justify-content: space-between;
+    &__btn {
+      &--right {
+        padding-left: 2rem;
+      }
+    }
+  }
+  @include respond(tab-port) {
+    margin: 0 auto;
+    margin-top: -20rem;
+  }
+}
